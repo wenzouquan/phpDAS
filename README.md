@@ -38,7 +38,7 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 
 
 
-# 开始使用phpDAS (php Distributed Application Service) 分布式微服务架构
+# 开始使用phpDAS
 
 
 
