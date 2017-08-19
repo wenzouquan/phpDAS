@@ -38,7 +38,7 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 
 
 
-#开始使用phpDAS (php Distributed Application Service) 分布式微服务架构
+# 开始使用phpDAS (php Distributed Application Service) 分布式微服务架构
 
 
 
@@ -80,16 +80,16 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 
 
 
-#thrift 使用
+# thrift 使用
 
 
-#consul服务安装搭建与管理
+# consul服务安装搭建与管理
 
 
-#swoole服务器进程守护无人值守
+# swoole服务器进程守护无人值守
 
 
-#分布式 LVS+Keepalive 
+# 分布式 LVS+Keepalive 
 
 
 # 微服务开发与调式方法
