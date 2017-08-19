@@ -98,7 +98,7 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 # 性能测试
 
 
-# phpDAS 与 EDAS 比较
+
 
 
 
