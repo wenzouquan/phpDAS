@@ -11,7 +11,6 @@ class Server {
 		$this->application = $app;
 		$this->application->getDi()->getRpcClient();
 		$this->config = $this->application->getDi()->getConfig()->get("server");
-		var_dump($this->config);
 	}
 	function onStart() {
 		echo "tcp : " . $this->ip . ":" . $this->config['port'] . "  Start\n";
