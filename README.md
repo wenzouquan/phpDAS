@@ -8,13 +8,13 @@ Swoole （C语言写的网络通信框架 ）
 
 thrift（多语言服务接口定义）
 
-consul（分布服务发现与管理）
+consul（分布式服务发现与管理）
 
 Phalcon（C语言写的php mvc框架）
 
 composer(php 依赖管理)
 
-
+LVS+Keepalive （分布式）
 
 
 # 安装composer 
