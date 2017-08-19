@@ -1,0 +1,9 @@
+{
+	"require": {
+		"phpkit/core": "dev-master",
+		"phpkit/thriftrpc": "dev-master",
+		"phpkit/base": "dev-master",
+		"phpkit/config": "dev-master",
+		"phpkit/redis": "dev-master"
+	}
+}

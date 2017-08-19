@@ -1,0 +1,5 @@
+{
+	"require": {
+		"phpkit/thriftrpc": "dev-master"
+	}
+}
