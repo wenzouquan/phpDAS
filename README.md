@@ -129,7 +129,7 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 # 微服务开发与调式方法
 
 
- 上面我们提到用php server.php  来启动微服务，这种方式使用tpc协议，代码运行一次之后就常驻内存了，所以我们的改了代码，需要重启或热替换。这样对我们开发调试有点不方便。
+ 上面我们提到用php server.php  来启动微服务，这种方式使用基于Swoole启动的tpc协议服务，代码运行一次之后就常驻内存了，所以我们的改了代码，需要重启或热替换。这样对我们开发调试有点不方便。
 
 
 
