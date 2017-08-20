@@ -1,4 +1,8 @@
 <?php
+$xhprof_enable = 0; //是否性能跟跟踪
+if (function_exists('xhprof_enable') && $xhprof_enable == 1) {
+	xhprof_enable();
+}
 require 'vendor/autoload.php';
 require 'Swoole/Server.php';
 use phpkit\core\Phpkit as Phpkit;
@@ -8,6 +12,7 @@ use \phpkit\base\BaseController;
 define("phpkitRoot", dirname(__FILE__));
 $phpkit = new Phpkit();
 $setting = require phpkitRoot . '/config/setting.php';
+
 class IndexController extends BaseController {
 	public function fire_theme_method($class, $method) {
 		$fire_args = array();
@@ -48,3 +53,14 @@ class IndexController extends BaseController {
 
 //初始化phpkit
 $app = $phpkit->run($setting);
+
+if (function_exists('xhprof_enable') && $xhprof_enable == 1) {
+	$XHPROF_ROOT = "/Volumes/UNTITLED/www/xhprof/"; //xhprof的根目录
+	$dataDir = '/Volumes/UNTITLED/www/xhprof/tmp'; //文件保存目录
+	$xhprof_data = xhprof_disable('/tmp');
+	include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_lib.php";
+	include_once $XHPROF_ROOT . "/xhprof_lib/utils/xhprof_runs.php";
+	$xhprof_runs = new XHProfRuns_Default($dataDir);
+	$run_id = $xhprof_runs->save_run($xhprof_data, "xhprof_testing");
+	echo '<script language="javascript" type="text/javascript">console.log("http://debug.com/index.php/index.php?run=' . $run_id . '&source=xhprof_testing\n");</script>';
+}
