@@ -16,6 +16,7 @@
  * Did you also notice that Thrift supports C style comments?
  */
 namespace php Services.Demo.HiService
+namespace java services.demo.hiService
 service HiService{
     string say(1:string name);
 } 
