@@ -122,6 +122,29 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 
 # swoole服务器进程守护无人值守
 
+打开phpDAS_service/Swoole/check_server.sh 文件 , 修改把端口(8091)改成自己服务的端口,目录也改成server.php的目录
+
+count=`ps -fe |lsof -i :8091| wc -l`
+echo $count
+if [ $count -lt 1 ]; then
+ps -eaf |grep "server.php" | grep -v "grep"| awk '{print $2}'|xargs kill -9
+sleep 2
+ulimit -c unlimited
+php  /Volumes/UNTITLED/www/phpDAS/phpDAS_service/server.php
+echo "restart";
+echo $(date +%Y-%m-%d_%H:%M:%S) >/Volumes/UNTITLED/www/phpDAS/phpDAS_service/log/restart.log
+fi
+
+使用 crontab 监控 check_server.sh 文件 ,一分钟检查一次服务有没有
+
+crontab -e //添加任务
+
+*/1 * * * * /Volumes/UNTITLED/www/phpDAS/phpDAS_service/Swoole/check_server.sh
+
+crontab -l //查看任务列表
+
+
+
 
 # 分布式 LVS+Keepalive 
 
