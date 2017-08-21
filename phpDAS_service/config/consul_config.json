@@ -1,0 +1,1 @@
+{"node_name":"node1","start_join":["127.0.0.1"],"data_dir":"\/tmp\/consul","bind_addr":"127.0.0.1","services":[{"ID":"7f1131cced35b416e7710a0554d8a60a","Name":"Services\\Demo\\HiService","Address":"127.0.0.1","Port":8091,"tags":["Services\\Demo\\HiService","127.0.0.1","8091"],"Check":{"name":"status","tcp":"127.0.0.1:8091","Interval":"5s","timeout":"1s"}}]}
