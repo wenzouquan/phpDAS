@@ -2,7 +2,7 @@
 
 php 分布式微服务架构
 
-php7  (开发环境是在php7 , php7以下版本没有测试)
+php7  (开发环境是在php7 , php5.6)
 
 Swoole （C语言写的网络通信框架 ）
 
@@ -14,7 +14,7 @@ Phalcon（C语言写的php mvc框架）
 
 composer(php 依赖管理)
 
-LVS+Keepalive （分布式）
+LVS+Keepalive （负载均衡）
 
 
 
@@ -119,23 +119,39 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 
 # consul服务安装搭建与管理
 
+https://www.consul.io/  进入官网 下载安装 consul
 
-# swoole服务器进程守护无人值守
+
+
+
+
+
+
+# swoole服务器进程守护
 
 打开phpDAS_service/Swoole/check_server.sh 文件 , 修改把端口(8091)改成自己服务的端口,目录也改成server.php的目录
 
 count=`ps -fe |lsof -i :8091| wc -l`
+
 echo $count
+
 if [ $count -lt 1 ]; then
+
 ps -eaf |grep "server.php" | grep -v "grep"| awk '{print $2}'|xargs kill -9
+
 sleep 2
+
 ulimit -c unlimited
+
 php  /Volumes/UNTITLED/www/phpDAS/phpDAS_service/server.php
+
 echo "restart";
+
 echo $(date +%Y-%m-%d_%H:%M:%S) >/Volumes/UNTITLED/www/phpDAS/phpDAS_service/log/restart.log
+
 fi
 
-使用 crontab 监控 check_server.sh 文件 ,一分钟检查一次服务有没有
+使用 crontab 监控 check_server.sh 文件 ,一分钟检查一次服务
 
 crontab -e //添加任务
 
@@ -147,6 +163,8 @@ crontab -l //查看任务列表
 
 
 # 分布式 LVS+Keepalive 
+
+
 
 
 # 微服务开发与调式方法
