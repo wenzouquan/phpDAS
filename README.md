@@ -6,7 +6,7 @@ php7  (开发环境是在php7 , php5.6)
 
 Swoole （C语言写的网络通信框架 ）
 
-thrift（多语言服务接口定义）
+thrift（多语言RPC服务接口定义）
 
 consul（分布式服务发现与管理）
 
@@ -212,7 +212,7 @@ http://tonybai.com/2015/07/06/implement-distributed-services-registery-and-disco
 
 
 
-也可以在编辑器上打断点了，debug 配置相关文档如下：ttp://www.cnblogs.com/derrck/p/5195946.html
+也可以在编辑器上打断点了，debug 配置相关文档如下：http://www.cnblogs.com/derrck/p/5195946.html
 
 
 
@@ -252,7 +252,6 @@ crontab -l //查看任务列表
 
 
 
-# 分布式 LVS+Keepalive 
 
 
 
@@ -261,10 +260,49 @@ crontab -l //查看任务列表
 
 # 性能测试
 
+php client.php
+
+1、调用100次发现服务并使用tcp协议执行服务
+
+[发现服务100次，页面执行时间：0.092694044113159 秒]
 
 
 
+2、调用100次发现,并curl使用http协议执行服务
 
+[发现服务100次，页面执行时间：3.4024829864502 秒]
+
+
+//定义服务接口
+$servicesApi = array(
+	'Services\\Demo' => dirname(dirname(__FILE__)) . '/phpDAS_api/gen-php', //Services的目录
+);
+//实例化redis
+$redis =  new \Redis();
+$redis->connect("127.0.0.1", "6379");
+//实例化客户端
+$client = new \phpkit\thriftrpc\Client($servicesApi);
+$client->setRedis($redis);//注入redis 对象
+$client->setHttpDedug(1);//使用http调试
+//$client->setXdebugSession(14462);//调试XdebugSession
+//实例化服务
+$stime = microtime(true);
+$count =100;
+
+for($i=0;$i<$count;$i++){
+    //发现服务
+    $hiService = $client->getRPCService("Services\\Demo\\HiService");
+    //服务调用
+    $hiService->say("wen");
+}
+
+$etime = microtime(true);
+$total = $etime - $stime;
+echo "<br />[发现服务{$count}次，页面执行时间：{$total} ]秒";
+
+
+
+# 分布式 LVS+Keepalive
 
 
 
