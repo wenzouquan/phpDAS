@@ -1,6 +1,5 @@
 {
 	"require": {
-		"phpkit/thriftrpc": "dev-master",
-		"phpkit/consulapi": "dev-master"
+		"phpkit/thriftrpc": "dev-master"
 	}
 }
