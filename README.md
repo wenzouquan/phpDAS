@@ -162,8 +162,11 @@ http://tonybai.com/2015/07/06/implement-distributed-services-registery-and-disco
 在这里架构里服务发现是存在redis里,所以使用前请先配置redis
 
 
-代码参考:phpDAS_service/bin/AddServerToRedis.php
+线上需要修改这里代码 redis配置 :phpDAS_service/bin/AddServerToRedis.php
 
+
+
+这样consul监听到服务添加或减少都会调用phpDAS_service/bin/AddServerToRedis.php 这个脚本 ,从而达到服务同步到redis
 
 
 
