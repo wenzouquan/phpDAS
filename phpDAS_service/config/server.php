@@ -4,7 +4,9 @@
  * 服务器设置
  */
 
-$config['port'] = 8091;
+$config['port'] = 8091;//tcp
+$config['ip']  ="192.168.0.101"; //tcp
+$config['http'] ="http://pdas.com";//http服务器域名,一般用于调试
 $config['set'] = [
 	'log_file' => phpkitRoot . "/log/swoole.log",
 	'log_level' => 5,
