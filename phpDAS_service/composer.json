@@ -4,6 +4,7 @@
 		"phpkit/thriftrpc": "dev-master",
 		"phpkit/base": "dev-master",
 		"phpkit/config": "dev-master",
-		"phpkit/redis": "dev-master"
+		"phpkit/redis": "dev-master",
+		"phpkit/aliyun-logger": "dev-master"
 	}
 }
