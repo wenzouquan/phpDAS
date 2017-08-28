@@ -1,20 +1,55 @@
-# phpDAS
+# phpDAS 特性
 
-php 分布式微服务架构
 
-php7  (开发环境是在php7 , php5.6)
+1、php7  (开发环境是在php7 , php5.6)
 
-Swoole （C语言写的网络通信框架 ）
+建议使用php7 , 经测试运行速度是php5.6, 8倍左右
 
-thrift（多语言RPC服务接口定义）
 
-consul（分布式服务发现与管理）
 
-Phalcon（C语言写的php mvc框架）
+2、Swoole （C语言写的网络通信框架 ）
 
-composer(php 依赖管理)
+使用Swoole 实现异步多线程服务器 , 异步任务 , 异步IO
 
-LVS+Keepalive （负载均衡）
+
+3、thrift（多语言RPC服务接口定义）
+
+基于thrift 编写RPC服务 , 实现多语言调用服务,如:java , php , .net 等等
+
+
+4、consul（分布式服务发现与管理）
+
+使用consul 实现分布式中的服务管理, 服务健康检测,服务监控等
+
+
+5、Phalcon（C语言写的php mvc框架）
+
+使用Phalcon 实现mvc框架 , 它是C语言写的php扩展, 服务注入方式
+
+
+6、composer(php 依赖管理)
+
+框架使用到的类都提交到composer了 , 可以按需要安装依赖, 由我们来维护代码, 你可以更专注于业务代码
+
+
+
+7、阿里云的日志服务logger
+
+提供日志采集和强大日志接口、日志自定义索引搜索 , 还有日志上下文查询锁定问题更简单,更有报警等功能
+
+
+
+8、阿里云的MQ消息服务
+
+简直就是一万能的变压器,支持上亿消息产生 , 然后我们只在平滑消费消息就可以了,不会因为高并发而把服务挂掉! 好评!
+
+
+9 、 分布式redis
+
+架构里必须安装redis ,  服务发现是在redis里找服务的 , 这样支持高并发  ,  consul 会监听服务是健康而更新redis里的服务
+
+
+
 
 
 
@@ -245,7 +280,7 @@ fi
 
 crontab -e //添加任务
 
-*/1 * * * * /Volumes/UNTITLED/www/phpDAS/phpDAS_service/Swoole/check_server.sh
+*/1 * * * * /Volumes/UNTITLED/www/phpDAS/phpDAS_service/bin/check_server.sh
 
 crontab -l //查看任务列表
 
@@ -320,7 +355,7 @@ echo "<br />[发现服务{$count}次，页面执行时间：{$total} ]秒";
 
 
 
-# 分布式 LVS+Keepalive
+
 
 
 
