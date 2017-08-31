@@ -49,6 +49,21 @@
 架构里必须安装redis ,  服务发现是在redis里找服务的 , 这样支持高并发  ,  consul 会监听服务是健康而更新redis里的服务
 
 
+10、多线程调用
+
+使用Swoole实现多线程调用 ,
+
+$content = $this->getDi()->getAsyncClient()->setClassName("\\app\\services\\HiService")->callBack(function ($params) {
+                              var_dump($params);
+                               })
+
+
+->errorCallback(function($error) {
+                                  // var_dump($this->say3("error"));
+                              })
+                              
+
+->say3('wen');
 
 
 
@@ -76,6 +91,7 @@ http://phalcon.ipanta.com/1.3/tutorial.html#checking-your-installation
 
 
 
+# phpDAS手册
 
 
 
